@@ -83,17 +83,17 @@
             this.cGauge1});
             this.gaugeControl1.Location = new System.Drawing.Point(0, 26);
             this.gaugeControl1.Name = "gaugeControl1";
-            this.gaugeControl1.Size = new System.Drawing.Size(1069, 987);
+            this.gaugeControl1.Size = new System.Drawing.Size(1059, 955);
             this.gaugeControl1.TabIndex = 0;
-            //this.gaugeControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-            //this.gaugeControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            //this.gaugeControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+            this.gaugeControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.gaugeControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.gaugeControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             // 
             // cGauge1
             // 
             this.cGauge1.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleBackgroundLayerComponent[] {
             this.arcScaleBackgroundLayerComponent1});
-            this.cGauge1.Bounds = new System.Drawing.Rectangle(6, 6, 1057, 975);
+            this.cGauge1.Bounds = new System.Drawing.Rectangle(6, 6, 1047, 943);
             this.cGauge1.Labels.AddRange(new DevExpress.XtraGauges.Win.Base.LabelComponent[] {
             this.labelComponent1});
             this.cGauge1.Name = "cGauge1";
@@ -265,15 +265,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1069, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(1059, 26);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1013);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 981);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1069, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1059, 0);
             // 
             // barDockControlLeft
             // 
@@ -281,15 +281,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 987);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 955);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1069, 26);
+            this.barDockControlRight.Location = new System.Drawing.Point(1059, 26);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 987);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 955);
             // 
             // barSubItem1
             // 
@@ -380,21 +380,26 @@
             // 
             // Form1
             // 
+            this.Appearance.BackColor = System.Drawing.Color.Black;
+            this.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.Appearance.Options.UseBackColor = true;
+            this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1069, 1013);
+            this.ClientSize = new System.Drawing.Size(1059, 981);
             this.Controls.Add(this.gaugeControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.DoubleBuffered = true;
+            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
             this.Name = "Form1";
             this.Text = "AngleReader";
             this.TopMost = true;
-            //this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-            //this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            //this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.cGauge1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleBackgroundLayerComponent1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleComponent1)).EndInit();

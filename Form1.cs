@@ -15,9 +15,9 @@ using DevExpress.XtraEditors;
 
 namespace AngleReaderWF
 {
-    public partial class Form1 : Form
+    public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
-
+        
         private bool mouseDown;
         private Point lastLocation;
         private String comPort = "None";

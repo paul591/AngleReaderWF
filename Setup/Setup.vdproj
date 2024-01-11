@@ -15,20 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "MsmKey" = "8:_167F74D673B84F57A708431893001CB8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_180F894504EA24C26895306FFEA742BB"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1896A90EC4B83B97F5C5E5D2640DADC5"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -70,7 +70,13 @@
         "Entry"
         {
         "MsmKey" = "8:_2FF15C6EC5877CF28482D6878248ECC7"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -118,19 +124,19 @@
         "Entry"
         {
         "MsmKey" = "8:_59C62D2AC3949572496F798F1715D3FC"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6D947FAE3D38B1837E19D10278DE5D96"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_71FABB686C5D4667523458B8BD2FD8F8"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -142,7 +148,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8450E1B9556134AC1D3684F0F2F7B835"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -160,7 +166,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8FA508D818393D97805BA8F79EF4D377"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -208,7 +214,7 @@
         "Entry"
         {
         "MsmKey" = "8:_95B2C14AC8604CE261D095B457BE88A5"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -220,7 +226,7 @@
         "Entry"
         {
         "MsmKey" = "8:_96B5EA4EC6F8E91A7361FFF7BD518365"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -244,7 +250,7 @@
         "Entry"
         {
         "MsmKey" = "8:_97D687BB281A2FD014B0D6FCC07BFBCF"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -322,7 +328,7 @@
         "Entry"
         {
         "MsmKey" = "8:_99741173BE6D62C6BD9754AA429438AE"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -352,13 +358,19 @@
         "Entry"
         {
         "MsmKey" = "8:_A1BA7540F6393200389EF7D2979742FF"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AD3610D78D344BFCBB52E7C47A908679"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B30C2B6E252C0AA56EA10F47C6E6AEBF"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -436,7 +448,7 @@
         "Entry"
         {
         "MsmKey" = "8:_DB5D5AB09E35797A6C6D4511F06207DC"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -520,7 +532,7 @@
         "Entry"
         {
         "MsmKey" = "8:_DD47C7BD8353B8271552CC6B1BAFF42C"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -538,13 +550,13 @@
         "Entry"
         {
         "MsmKey" = "8:_E0C0B404F08E50EB773CCF3FF5FA5B30"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F266CD95A74E1C4E69873ACDB19582BA"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -562,7 +574,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+        "OwnerKey" = "8:_5816CB404FE749F4840530BAFE315AD4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -685,6 +697,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -701,6 +721,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -730,6 +766,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_167F74D673B84F57A708431893001CB8"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\OneDrive\\Projects\\AngleReader\\icon.ico"
+            "TargetName" = "8:icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_6E3A868FF3F7442D9DC17B3DD807DEE1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_180F894504EA24C26895306FFEA742BB"
             {
             "AssemblyRegister" = "3:1"
@@ -1133,6 +1189,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AD3610D78D344BFCBB52E7C47A908679"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\OneDrive\\Projects\\AngleReader\\Screenshot 2024-01-11 171723.png"
+            "TargetName" = "8:Screenshot 2024-01-11 171723.png"
+            "Tag" = "8:"
+            "Folder" = "8:_6E3A868FF3F7442D9DC17B3DD807DEE1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B30C2B6E252C0AA56EA10F47C6E6AEBF"
             {
             "AssemblyRegister" = "3:1"
@@ -1329,7 +1405,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_6E3A868FF3F7442D9DC17B3DD807DEE1"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -1356,13 +1432,13 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AngleReader"
         "ProductCode" = "8:{AE64B624-DB49-473E-876C-B3056F35E9DF}"
-        "PackageCode" = "8:{DDB51DFD-F385-4C80-9DEF-2EB881BE8262}"
+        "PackageCode" = "8:{167B46BD-FBAF-4261-8BA2-61DEFFDFBC3F}"
         "UpgradeCode" = "8:{E7964BDB-4853-471C-AA34-875B5DDE5A8A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
         "Manufacturer" = "8:Loftsoft"
         "ARPHELPTELEPHONE" = "8:"
@@ -1377,7 +1453,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
@@ -1476,32 +1552,32 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2E99D630A4534759B83C89A1F9CFAABF"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7F946E495B684046BEF92C45A867D545"
             {
-            "Name" = "8:AngleReader"
+            "Name" = "8:Angle Reader"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
-            "Folder" = "8:_DBC1DBBA773442B8A4A9B42FC58CD9E3"
-            "WorkingFolder" = "8:_6E3A868FF3F7442D9DC17B3DD807DEE1"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FEED9D13EDA7457F9094A70FD2B7A1D5"
-            {
-            "Name" = "8:AngleReader"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_020C24B134464CC9ACDEF5DD30D30D7C"
+            "Target" = "8:_5816CB404FE749F4840530BAFE315AD4"
             "Folder" = "8:_4BAAAE05C649452BB12E3D6F362AF717"
             "WorkingFolder" = "8:_6E3A868FF3F7442D9DC17B3DD807DEE1"
-            "Icon" = "8:"
+            "Icon" = "8:_167F74D673B84F57A708431893001CB8"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F2E1D49A4C3040159B222F345D4DC32C"
+            {
+            "Name" = "8:Angle Reader"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_5816CB404FE749F4840530BAFE315AD4"
+            "Folder" = "8:_DBC1DBBA773442B8A4A9B42FC58CD9E3"
+            "WorkingFolder" = "8:_6E3A868FF3F7442D9DC17B3DD807DEE1"
+            "Icon" = "8:_167F74D673B84F57A708431893001CB8"
             "Feature" = "8:"
             }
         }
@@ -1903,9 +1979,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_020C24B134464CC9ACDEF5DD30D30D7C"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5816CB404FE749F4840530BAFE315AD4"
             {
-            "SourcePath" = "8:..\\obj\\Debug\\AngleReaderWF.exe"
+            "SourcePath" = "8:..\\obj\\Release\\AngleReaderWF.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_6E3A868FF3F7442D9DC17B3DD807DEE1"
@@ -1923,7 +1999,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
+            "OutputConfiguration" = "8:Release|Any CPU"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{8D674BCE-97FB-40B0-9164-EE440B627B4B}"
             "ShowKeyOutput" = "11:TRUE"

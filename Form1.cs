@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGauges.Core.Drawing;
+using DevExpress.XtraBars;
 
 namespace AngleReaderWF
 {
@@ -27,6 +29,10 @@ namespace AngleReaderWF
         public Form1()
         {
             InitializeComponent();
+
+            ComplexShader needleShader = this.arcScaleNeedleComponent1.Shader as ComplexShader;
+            needleShader.StyleColor1 = Color.FromArgb(0, 103, 192);
+
             this.TransparencyKey = Color.Black;
 
             comPort = Settings.Default.comport;
@@ -36,8 +42,34 @@ namespace AngleReaderWF
             barEditItem4.EditValue = comPort;
             serialPort2.DataReceived += new SerialDataReceivedEventHandler(serialPort2_DataReceived);
             serialPort2.DtrEnable = true;
+
         }
 
+        void OpenComPort()
+        {
+            if (serialPort2 != null)
+            {
+                serialPort2.Close();
+                serialPort2.BaudRate = 115200;
+                if (!comPort.StartsWith("COM"))
+                {
+                    MessageBox.Show("No COM Port selected.  Please plug in the device and select the correct port.", "No COM Port");
+                }
+                else {
+                    serialPort2.PortName = comPort;
+
+                    try
+                    {
+                        serialPort2.Open();
+                        Zero();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "COM Port error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
 
         void SetMirrorState()
         {
@@ -75,6 +107,10 @@ namespace AngleReaderWF
             double angleForModulus = angle * 10;
             long longAngleForModuls = ((long)angleForModulus) % 3600;
             float finalAngle = ((float)longAngleForModuls) / 10.0f;
+            if(finalAngle < 0)
+            {
+                finalAngle = 360 + finalAngle;
+            }
 
             Console.WriteLine(longAngleForModuls);
 
@@ -129,20 +165,7 @@ namespace AngleReaderWF
             Settings.Default.comport = comPort;
             Settings.Default.Save();
 
-            if (serialPort2 != null)
-            {
-                serialPort2.Close();
-                serialPort2.PortName = comPort;
-                try
-                {
-                    serialPort2.Open();
-                    Zero();
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("COM Port already in use or not available.", "COM Port error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            OpenComPort();
         }
 
         void Zero()
@@ -165,6 +188,28 @@ namespace AngleReaderWF
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Zero();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //tidy up the serial port
+
+            serialPort2.Close();
+            serialPort2.Dispose();
+        }
+
+        private void barEditItem4_HiddenEditor(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            comPort = (sender as BarEditItem).EditValue.ToString();
+            if(serialPort2.IsOpen)
+            {
+                serialPort2.Close();
+                serialPort2.PortName = comPort;
+                OpenComPort();
+
+                Settings.Default.comport = comPort;
+                Settings.Default.Save();
+            }
         }
     }
 }

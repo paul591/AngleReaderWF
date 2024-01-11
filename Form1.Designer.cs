@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::AngleReaderWF.SplashScreen1), true, true);
             this.gaugeControl1 = new DevExpress.XtraGauges.Win.GaugeControl();
             this.cGauge1 = new DevExpress.XtraGauges.Win.Gauges.Circular.CircularGauge();
             this.arcScaleBackgroundLayerComponent1 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleBackgroundLayerComponent();
@@ -60,6 +61,7 @@
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.barEditItem5 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cGauge1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleBackgroundLayerComponent1)).BeginInit();
@@ -81,9 +83,9 @@
             this.gaugeControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaugeControl1.Gauges.AddRange(new DevExpress.XtraGauges.Base.IGauge[] {
             this.cGauge1});
-            this.gaugeControl1.Location = new System.Drawing.Point(0, 26);
+            this.gaugeControl1.Location = new System.Drawing.Point(0, 33);
             this.gaugeControl1.Name = "gaugeControl1";
-            this.gaugeControl1.Size = new System.Drawing.Size(1059, 955);
+            this.gaugeControl1.Size = new System.Drawing.Size(1057, 944);
             this.gaugeControl1.TabIndex = 0;
             this.gaugeControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.gaugeControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
@@ -93,7 +95,7 @@
             // 
             this.cGauge1.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleBackgroundLayerComponent[] {
             this.arcScaleBackgroundLayerComponent1});
-            this.cGauge1.Bounds = new System.Drawing.Rectangle(6, 6, 1047, 943);
+            this.cGauge1.Bounds = new System.Drawing.Rectangle(6, 6, 1045, 932);
             this.cGauge1.Labels.AddRange(new DevExpress.XtraGauges.Win.Base.LabelComponent[] {
             this.labelComponent1});
             this.cGauge1.Name = "cGauge1";
@@ -106,20 +108,19 @@
             // 
             this.arcScaleBackgroundLayerComponent1.ArcScale = this.arcScaleComponent1;
             this.arcScaleBackgroundLayerComponent1.Name = "bg";
-            this.arcScaleBackgroundLayerComponent1.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style1;
             this.arcScaleBackgroundLayerComponent1.ZOrder = 1000;
             // 
             // arcScaleComponent1
             // 
-            this.arcScaleComponent1.AppearanceMajorTickmark.BorderBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Blue");
+            this.arcScaleComponent1.AppearanceMajorTickmark.BorderBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
             this.arcScaleComponent1.AppearanceMajorTickmark.BorderWidth = 1F;
-            this.arcScaleComponent1.AppearanceMajorTickmark.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Blue");
+            this.arcScaleComponent1.AppearanceMajorTickmark.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
             this.arcScaleComponent1.AppearanceMinorTickmark.BorderBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:White");
             this.arcScaleComponent1.AppearanceMinorTickmark.BorderWidth = 1F;
-            this.arcScaleComponent1.AppearanceMinorTickmark.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Blue");
-            this.arcScaleComponent1.AppearanceScale.Brush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Blue");
+            this.arcScaleComponent1.AppearanceMinorTickmark.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
+            this.arcScaleComponent1.AppearanceScale.Brush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
             this.arcScaleComponent1.AppearanceTickmarkText.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.arcScaleComponent1.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Blue");
+            this.arcScaleComponent1.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
             this.arcScaleComponent1.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
             this.arcScaleComponent1.EndAngle = 270F;
             this.arcScaleComponent1.MajorTickCount = 37;
@@ -136,18 +137,18 @@
             this.arcScaleComponent1.MinorTickmark.ShapeScale = new DevExpress.XtraGauges.Core.Base.FactorF2D(1F, 0.4F);
             this.arcScaleComponent1.MinorTickmark.ShapeType = DevExpress.XtraGauges.Core.Model.TickmarkShapeType.Circular_Style1_3;
             this.arcScaleComponent1.Name = "scale1";
-            this.arcScaleComponent1.Shader = new DevExpress.XtraGauges.Core.Drawing.ComplexShader("Opacity[1] Colors[Style1:#0000C0;Style2:]");
+            this.arcScaleComponent1.Shader = new DevExpress.XtraGauges.Core.Drawing.ComplexShader("Opacity[1] Colors[Style1:#0067C0;Style2:]");
             this.arcScaleComponent1.StartAngle = -90F;
             // 
             // labelComponent1
             // 
             this.labelComponent1.AppearanceText.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelComponent1.AppearanceText.Format = new DevExpress.XtraGauges.Core.Drawing.StringFormatObject(System.Drawing.StringAlignment.Far, System.Drawing.StringAlignment.Center, System.Drawing.StringTrimming.Character, System.Drawing.StringFormatFlags.NoClip);
-            this.labelComponent1.AppearanceText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Blue");
+            this.labelComponent1.AppearanceText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
             this.labelComponent1.Name = "cGauge1_Label1";
             this.labelComponent1.Position = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 160F);
             this.labelComponent1.Size = new System.Drawing.SizeF(110F, 25F);
-            this.labelComponent1.Text = "000.0 deg";
+            this.labelComponent1.Text = "0.0 deg";
             this.labelComponent1.ZOrder = -1001;
             // 
             // arcScaleNeedleComponent1
@@ -155,9 +156,9 @@
             this.arcScaleNeedleComponent1.ArcScale = this.arcScaleComponent1;
             this.arcScaleNeedleComponent1.EndOffset = 10F;
             this.arcScaleNeedleComponent1.Name = "needle";
-            this.arcScaleNeedleComponent1.Shader = new DevExpress.XtraGauges.Core.Drawing.ComplexShader("Opacity[1] Colors[Style1:Blue;Style2:Black]");
+            this.arcScaleNeedleComponent1.Shader = new DevExpress.XtraGauges.Core.Drawing.ComplexShader("Opacity[1] Colors[Style1:;Style2:]");
             this.arcScaleNeedleComponent1.ShapeType = DevExpress.XtraGauges.Core.Model.NeedleShapeType.CircularFull_Clock;
-            this.arcScaleNeedleComponent1.StartOffset = -4.5F;
+            this.arcScaleNeedleComponent1.StartOffset = -9F;
             this.arcScaleNeedleComponent1.ZOrder = -50;
             // 
             // barManager1
@@ -182,9 +183,10 @@
             this.barToggleSwitchItem1,
             this.barStaticItemMirrorLabel,
             this.barEditItem5,
-            this.barButtonItem3});
+            this.barButtonItem3,
+            this.barButtonItem4});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 13;
+            this.barManager1.MaxItemId = 14;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
@@ -224,6 +226,7 @@
             this.barEditItem4.Name = "barEditItem4";
             this.barEditItem4.Size = new System.Drawing.Size(100, 0);
             this.barEditItem4.EditValueChanged += new System.EventHandler(this.barEditItem4_EditValueChanged);
+            this.barEditItem4.HiddenEditor += new DevExpress.XtraBars.ItemClickEventHandler(this.barEditItem4_HiddenEditor);
             this.barEditItem4.ShowingEditor += new DevExpress.XtraBars.ItemCancelEventHandler(this.barEditItem4_ShowingEditor);
             // 
             // repositoryItemComboBox2
@@ -265,31 +268,31 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1059, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(1057, 33);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 981);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 977);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1059, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1057, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 33);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 955);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 944);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1059, 26);
+            this.barDockControlRight.Location = new System.Drawing.Point(1057, 33);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 955);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 944);
             // 
             // barSubItem1
             // 
@@ -374,9 +377,19 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "About";
+            this.barButtonItem4.Id = 13;
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
             // serialPort2
             // 
             this.serialPort2.BaudRate = 115200;
+            // 
+            // splashScreenManager1
+            // 
+            splashScreenManager1.ClosingDelay = 1000;
             // 
             // Form1
             // 
@@ -386,7 +399,7 @@
             this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 981);
+            this.ClientSize = new System.Drawing.Size(1057, 977);
             this.Controls.Add(this.gaugeControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -394,10 +407,11 @@
             this.Controls.Add(this.barDockControlTop);
             this.DoubleBuffered = true;
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("Form1.IconOptions.Image")));
+            this.IconOptions.Image = global::AngleReaderWF.Properties.Resources.icon;
             this.Name = "Form1";
-            this.Text = "AngleReader";
+            this.Text = "LoftSoft AngleReader";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
@@ -450,6 +464,7 @@
         private DevExpress.XtraBars.BarEditItem barEditItem5;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
     }
 }
 

@@ -394,6 +394,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.DoubleBuffered = true;
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("Form1.IconOptions.Image")));
             this.Name = "Form1";
             this.Text = "AngleReader";
             this.TopMost = true;

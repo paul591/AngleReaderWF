@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::AngleReaderWF.SplashScreen1), true, true);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gaugeControl1 = new DevExpress.XtraGauges.Win.GaugeControl();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.wpfGuageControl1 = new AngleReaderWF.WPFGuageControl();
             this.cGauge1 = new DevExpress.XtraGauges.Win.Gauges.Circular.CircularGauge();
             this.arcScaleBackgroundLayerComponent1 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleBackgroundLayerComponent();
             this.arcScaleComponent1 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleComponent();
@@ -63,6 +65,7 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
+            this.gaugeControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cGauge1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleBackgroundLayerComponent1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleComponent1)).BeginInit();
@@ -76,10 +79,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             this.SuspendLayout();
             // 
+            // splashScreenManager1
+            // 
+            splashScreenManager1.ClosingDelay = 1000;
+            // 
             // gaugeControl1
             // 
             this.gaugeControl1.BackColor = System.Drawing.Color.Black;
             this.gaugeControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gaugeControl1.Controls.Add(this.elementHost1);
             this.gaugeControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaugeControl1.Gauges.AddRange(new DevExpress.XtraGauges.Base.IGauge[] {
             this.cGauge1});
@@ -90,6 +98,17 @@
             this.gaugeControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.gaugeControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.gaugeControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.AutoSize = true;
+            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.elementHost1.Location = new System.Drawing.Point(0, 0);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(1057, 944);
+            this.elementHost1.TabIndex = 0;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.wpfGuageControl1;
             // 
             // cGauge1
             // 
@@ -128,9 +147,9 @@
             this.arcScaleComponent1.MajorTickmark.ShapeOffset = -13F;
             this.arcScaleComponent1.MajorTickmark.ShapeScale = new DevExpress.XtraGauges.Core.Base.FactorF2D(1F, 0.4F);
             this.arcScaleComponent1.MajorTickmark.ShapeType = DevExpress.XtraGauges.Core.Model.TickmarkShapeType.Circular_Style1_4;
-            this.arcScaleComponent1.MajorTickmark.ShowFirst = false;
+            this.arcScaleComponent1.MajorTickmark.ShowLast = false;
             this.arcScaleComponent1.MajorTickmark.TextOffset = 10F;
-            this.arcScaleComponent1.MajorTickmark.TextOrientation = DevExpress.XtraGauges.Core.Model.LabelOrientation.LeftToRight;
+            this.arcScaleComponent1.MajorTickmark.TextOrientation = DevExpress.XtraGauges.Core.Model.LabelOrientation.Tangent;
             this.arcScaleComponent1.MaxValue = 360F;
             this.arcScaleComponent1.MinorTickCount = 10;
             this.arcScaleComponent1.MinorTickmark.ShapeOffset = -7F;
@@ -387,10 +406,6 @@
             // 
             this.serialPort2.BaudRate = 115200;
             // 
-            // splashScreenManager1
-            // 
-            splashScreenManager1.ClosingDelay = 1000;
-            // 
             // Form1
             // 
             this.Appearance.BackColor = System.Drawing.Color.Black;
@@ -412,9 +427,12 @@
             this.Text = "LoftSoft AngleReader";
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+            this.gaugeControl1.ResumeLayout(false);
+            this.gaugeControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cGauge1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleBackgroundLayerComponent1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleComponent1)).EndInit();
@@ -465,6 +483,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private WPFGuageControl wpfGuageControl1;
     }
 }
 

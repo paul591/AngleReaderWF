@@ -46,5 +46,29 @@ namespace AngleReaderWF.Properties {
                 this["mirror"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public uint mode {
+            get {
+                return ((uint)(this["mode"]));
+            }
+            set {
+                this["mode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool wpfMode {
+            get {
+                return ((bool)(this["wpfMode"]));
+            }
+            set {
+                this["wpfMode"] = value;
+            }
+        }
     }
 }

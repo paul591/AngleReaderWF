@@ -34,19 +34,11 @@
             this.gaugeControl1 = new DevExpress.XtraGauges.Win.GaugeControl();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.wpfGuageControl1 = new AngleReaderWF.WPFGuageControl();
-            this.cGauge1 = new DevExpress.XtraGauges.Win.Gauges.Circular.CircularGauge();
-            this.arcScaleBackgroundLayerComponent1 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleBackgroundLayerComponent();
-            this.arcScaleComponent1 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleComponent();
-            this.labelComponent1 = new DevExpress.XtraGauges.Win.Base.LabelComponent();
-            this.arcScaleNeedleComponent1 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleNeedleComponent();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.barEditItem4 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.barToggleSwitchItem1 = new DevExpress.XtraBars.BarToggleSwitchItem();
-            this.barStaticItemMirrorLabel = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -61,16 +53,15 @@
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.barToggleSwitchItem1 = new DevExpress.XtraBars.BarToggleSwitchItem();
+            this.barStaticItemMirrorLabel = new DevExpress.XtraBars.BarStaticItem();
             this.barEditItem5 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
             this.gaugeControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cGauge1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arcScaleBackgroundLayerComponent1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arcScaleComponent1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelComponent1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arcScaleNeedleComponent1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -89,11 +80,9 @@
             this.gaugeControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gaugeControl1.Controls.Add(this.elementHost1);
             this.gaugeControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gaugeControl1.Gauges.AddRange(new DevExpress.XtraGauges.Base.IGauge[] {
-            this.cGauge1});
-            this.gaugeControl1.Location = new System.Drawing.Point(0, 33);
+            this.gaugeControl1.Location = new System.Drawing.Point(0, 22);
             this.gaugeControl1.Name = "gaugeControl1";
-            this.gaugeControl1.Size = new System.Drawing.Size(1057, 944);
+            this.gaugeControl1.Size = new System.Drawing.Size(386, 399);
             this.gaugeControl1.TabIndex = 0;
             this.gaugeControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.gaugeControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
@@ -105,80 +94,10 @@
             this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.elementHost1.Location = new System.Drawing.Point(0, 0);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(1057, 944);
+            this.elementHost1.Size = new System.Drawing.Size(386, 399);
             this.elementHost1.TabIndex = 0;
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = this.wpfGuageControl1;
-            // 
-            // cGauge1
-            // 
-            this.cGauge1.BackgroundLayers.AddRange(new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleBackgroundLayerComponent[] {
-            this.arcScaleBackgroundLayerComponent1});
-            this.cGauge1.Bounds = new System.Drawing.Rectangle(6, 6, 1045, 932);
-            this.cGauge1.Labels.AddRange(new DevExpress.XtraGauges.Win.Base.LabelComponent[] {
-            this.labelComponent1});
-            this.cGauge1.Name = "cGauge1";
-            this.cGauge1.Needles.AddRange(new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleNeedleComponent[] {
-            this.arcScaleNeedleComponent1});
-            this.cGauge1.Scales.AddRange(new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleComponent[] {
-            this.arcScaleComponent1});
-            // 
-            // arcScaleBackgroundLayerComponent1
-            // 
-            this.arcScaleBackgroundLayerComponent1.ArcScale = this.arcScaleComponent1;
-            this.arcScaleBackgroundLayerComponent1.Name = "bg";
-            this.arcScaleBackgroundLayerComponent1.ZOrder = 1000;
-            // 
-            // arcScaleComponent1
-            // 
-            this.arcScaleComponent1.AppearanceMajorTickmark.BorderBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
-            this.arcScaleComponent1.AppearanceMajorTickmark.BorderWidth = 1F;
-            this.arcScaleComponent1.AppearanceMajorTickmark.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
-            this.arcScaleComponent1.AppearanceMinorTickmark.BorderBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:White");
-            this.arcScaleComponent1.AppearanceMinorTickmark.BorderWidth = 1F;
-            this.arcScaleComponent1.AppearanceMinorTickmark.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
-            this.arcScaleComponent1.AppearanceScale.Brush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
-            this.arcScaleComponent1.AppearanceTickmarkText.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.arcScaleComponent1.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
-            this.arcScaleComponent1.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
-            this.arcScaleComponent1.EndAngle = 270F;
-            this.arcScaleComponent1.MajorTickCount = 37;
-            this.arcScaleComponent1.MajorTickmark.FormatString = "{0:F0}";
-            this.arcScaleComponent1.MajorTickmark.ShapeOffset = -13F;
-            this.arcScaleComponent1.MajorTickmark.ShapeScale = new DevExpress.XtraGauges.Core.Base.FactorF2D(1F, 0.4F);
-            this.arcScaleComponent1.MajorTickmark.ShapeType = DevExpress.XtraGauges.Core.Model.TickmarkShapeType.Circular_Style1_4;
-            this.arcScaleComponent1.MajorTickmark.ShowLast = false;
-            this.arcScaleComponent1.MajorTickmark.TextOffset = 10F;
-            this.arcScaleComponent1.MajorTickmark.TextOrientation = DevExpress.XtraGauges.Core.Model.LabelOrientation.Tangent;
-            this.arcScaleComponent1.MaxValue = 360F;
-            this.arcScaleComponent1.MinorTickCount = 10;
-            this.arcScaleComponent1.MinorTickmark.ShapeOffset = -7F;
-            this.arcScaleComponent1.MinorTickmark.ShapeScale = new DevExpress.XtraGauges.Core.Base.FactorF2D(1F, 0.4F);
-            this.arcScaleComponent1.MinorTickmark.ShapeType = DevExpress.XtraGauges.Core.Model.TickmarkShapeType.Circular_Style1_3;
-            this.arcScaleComponent1.Name = "scale1";
-            this.arcScaleComponent1.Shader = new DevExpress.XtraGauges.Core.Drawing.ComplexShader("Opacity[1] Colors[Style1:#0067C0;Style2:]");
-            this.arcScaleComponent1.StartAngle = -90F;
-            // 
-            // labelComponent1
-            // 
-            this.labelComponent1.AppearanceText.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelComponent1.AppearanceText.Format = new DevExpress.XtraGauges.Core.Drawing.StringFormatObject(System.Drawing.StringAlignment.Far, System.Drawing.StringAlignment.Center, System.Drawing.StringTrimming.Character, System.Drawing.StringFormatFlags.NoClip);
-            this.labelComponent1.AppearanceText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#0067C0");
-            this.labelComponent1.Name = "cGauge1_Label1";
-            this.labelComponent1.Position = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 160F);
-            this.labelComponent1.Size = new System.Drawing.SizeF(110F, 25F);
-            this.labelComponent1.Text = "0.0 deg";
-            this.labelComponent1.ZOrder = -1001;
-            // 
-            // arcScaleNeedleComponent1
-            // 
-            this.arcScaleNeedleComponent1.ArcScale = this.arcScaleComponent1;
-            this.arcScaleNeedleComponent1.EndOffset = 10F;
-            this.arcScaleNeedleComponent1.Name = "needle";
-            this.arcScaleNeedleComponent1.Shader = new DevExpress.XtraGauges.Core.Drawing.ComplexShader("Opacity[1] Colors[Style1:;Style2:]");
-            this.arcScaleNeedleComponent1.ShapeType = DevExpress.XtraGauges.Core.Model.NeedleShapeType.CircularFull_Clock;
-            this.arcScaleNeedleComponent1.StartOffset = -9F;
-            this.arcScaleNeedleComponent1.ZOrder = -50;
             // 
             // barManager1
             // 
@@ -203,9 +122,10 @@
             this.barStaticItemMirrorLabel,
             this.barEditItem5,
             this.barButtonItem3,
-            this.barButtonItem4});
+            this.barButtonItem4,
+            this.barCheckItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 14;
+            this.barManager1.MaxItemId = 15;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
@@ -221,10 +141,7 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barToggleSwitchItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItemMirrorLabel),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem4)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -256,62 +173,37 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
             // 
-            // barToggleSwitchItem1
-            // 
-            this.barToggleSwitchItem1.Caption = "Mirror";
-            this.barToggleSwitchItem1.Id = 9;
-            this.barToggleSwitchItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barToggleSwitchItem1.ImageOptions.SvgImage")));
-            this.barToggleSwitchItem1.Name = "barToggleSwitchItem1";
-            this.barToggleSwitchItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barToggleSwitchItem1.Size = new System.Drawing.Size(0, 20);
-            this.barToggleSwitchItem1.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barToggleSwitchItem1_CheckedChanged);
-            // 
-            // barStaticItemMirrorLabel
-            // 
-            this.barStaticItemMirrorLabel.Caption = "Mirror On";
-            this.barStaticItemMirrorLabel.Id = 10;
-            this.barStaticItemMirrorLabel.Name = "barStaticItemMirrorLabel";
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "Zero";
-            this.barButtonItem3.Id = 12;
-            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1057, 33);
+            this.barDockControlTop.Size = new System.Drawing.Size(386, 22);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 977);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 421);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1057, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(386, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 33);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 944);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 399);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1057, 33);
+            this.barDockControlRight.Location = new System.Drawing.Point(386, 22);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 944);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 399);
             // 
             // barSubItem1
             // 
@@ -381,6 +273,22 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
             // 
+            // barToggleSwitchItem1
+            // 
+            this.barToggleSwitchItem1.Caption = "Mirror";
+            this.barToggleSwitchItem1.Id = 9;
+            this.barToggleSwitchItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barToggleSwitchItem1.ImageOptions.SvgImage")));
+            this.barToggleSwitchItem1.Name = "barToggleSwitchItem1";
+            this.barToggleSwitchItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barToggleSwitchItem1.Size = new System.Drawing.Size(0, 20);
+            this.barToggleSwitchItem1.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barToggleSwitchItem1_CheckedChanged);
+            // 
+            // barStaticItemMirrorLabel
+            // 
+            this.barStaticItemMirrorLabel.Caption = "Mirror On";
+            this.barStaticItemMirrorLabel.Id = 10;
+            this.barStaticItemMirrorLabel.Name = "barStaticItemMirrorLabel";
+            // 
             // barEditItem5
             // 
             this.barEditItem5.Caption = "Zero";
@@ -396,11 +304,27 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Zero";
+            this.barButtonItem3.Id = 12;
+            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
             // barButtonItem4
             // 
             this.barButtonItem4.Caption = "About";
             this.barButtonItem4.Id = 13;
             this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barCheckItem1
+            // 
+            this.barCheckItem1.Caption = "Timer ";
+            this.barCheckItem1.Id = 14;
+            this.barCheckItem1.Name = "barCheckItem1";
+            this.barCheckItem1.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
             // 
             // serialPort2
             // 
@@ -414,7 +338,7 @@
             this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1057, 977);
+            this.ClientSize = new System.Drawing.Size(386, 421);
             this.Controls.Add(this.gaugeControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -433,11 +357,6 @@
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             this.gaugeControl1.ResumeLayout(false);
             this.gaugeControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cGauge1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arcScaleBackgroundLayerComponent1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arcScaleComponent1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelComponent1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arcScaleNeedleComponent1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
@@ -452,11 +371,6 @@
         #endregion
 
         private DevExpress.XtraGauges.Win.GaugeControl gaugeControl1;
-        private DevExpress.XtraGauges.Win.Gauges.Circular.CircularGauge cGauge1;
-        private DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleBackgroundLayerComponent arcScaleBackgroundLayerComponent1;
-        private DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleComponent arcScaleComponent1;
-        private DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleNeedleComponent arcScaleNeedleComponent1;
-        private DevExpress.XtraGauges.Win.Base.LabelComponent labelComponent1;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarSubItem barSubItem2;
@@ -485,6 +399,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
         private WPFGuageControl wpfGuageControl1;
+        private DevExpress.XtraBars.BarCheckItem barCheckItem1;
     }
 }
 

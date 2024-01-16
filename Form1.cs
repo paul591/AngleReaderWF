@@ -24,12 +24,6 @@ namespace AngleReaderWF
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
 
-        enum DisplayMode
-        {
-            Needle = 0,
-            Dial = 1,
-        }
-
         public float Angle
         {
             get { return _angle; }
@@ -42,9 +36,8 @@ namespace AngleReaderWF
         bool _mirrored = false;
         bool _testMode = false;
         bool _wpfMode = false;
-        Timer _testTimer;
-        DisplayMode _displayMode = DisplayMode.Needle;
-        WPFGuageControl _wpfGuageControl;
+        Timer _testTimer = new Timer();
+
         RotateTransform _rotateTransform;
 
         public Form1()
@@ -61,57 +54,83 @@ namespace AngleReaderWF
                 if (args[0] == "TEST")
                 {
                     _testMode = true;
-                    _testTimer.Interval = 20;
+                    _testTimer.Interval = 200;
                     _testTimer.Enabled = true;
+                    _testTimer.Tick += _testTimer_Tick;
                 }
-                else if (args[0] == "WPFTEST")
-                {
-                    _testMode = true;
-                    _testTimer.Interval = 20;
-                    _testTimer.Enabled = true;
-                    _wpfMode = true; 
-                }
-
             }
-
         }
 
         void CommonConstructor()
         {
             InitializeComponent();
 
-            ComplexShader needleShader = this.arcScaleNeedleComponent1.Shader as ComplexShader;
-            needleShader.StyleColor1 = Color.FromArgb(0, 103, 192);
-
             this.TransparencyKey = Color.Black;
 
             _comPort = Settings.Default.comport;
             _mirrored = Settings.Default.mirror;
-            _displayMode = (DisplayMode)Settings.Default.mode;
 
-            //override
-            _displayMode = DisplayMode.Dial;
+            if (_mirrored)
+            {
+                barStaticItemMirrorLabel.Caption = "Mirror On";
+                barToggleSwitchItem1.Checked = true;
+            }
+            else
+            {
+                barStaticItemMirrorLabel.Caption = "Mirror Off";
+                barToggleSwitchItem1.Checked = false;
+            }
 
-            SetMirrorState();
+            //SetMirrorState();
             barEditItem4.EditValue = _comPort;
             serialPort2.DataReceived += new SerialDataReceivedEventHandler(serialPort2_DataReceived);
             serialPort2.DtrEnable = true;
 
-            _testTimer = new Timer();
-            _testTimer.Tick += _testTimer_Tick;
+            wpfGuageControl1.mirrorBtn.Checked += MirrorBtn_Checked;
+            wpfGuageControl1.zeroBtn.Click += ZeroBtn_Click;
+            wpfGuageControl1.btnClose.Click += BtnClose_Click;
 
-            //_wpfMode = true;
+            wpfGuageControl1.popupMenuItemMirror.ItemClick += MirrorBtn_Checked;
+            wpfGuageControl1.popupMenuItemZero.ItemClick += ZeroBtn_Click;
+            wpfGuageControl1.popupMenuItemClose.ItemClick += BtnClose_Click;
 
-            if(_wpfMode)
-            {
-                _rotateTransform = new RotateTransform();
-                wpfGuageControl1.circularGuageControl.RenderTransform = this._rotateTransform;            
+            wpfGuageControl1.popupMenuItemShowMenu.ItemClick += PopupMenuItemShowMenu_ItemClick;
+
+            _rotateTransform = new RotateTransform();
+            wpfGuageControl1.circularGuageControl.RenderTransform = this._rotateTransform;
+        }
+
+        private void PopupMenuItemShowMenu_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            if(bar2.Visible)
+            { 
+                bar2.Visible = false;
+                this.FormBorderStyle = FormBorderStyle.None;
+                wpfGuageControl1.popupMenuItemShowMenu.Content = "Show Menu";
             }
             else
             {
-                elementHost1.Hide();
-                gaugeControl1.Show();
+                bar2.Visible = true;
+                this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+                wpfGuageControl1.popupMenuItemShowMenu.Content = "Hide Menu";
             }
+            
+        }
+
+        private void BtnClose_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            this.Dispose();
+            this.Close();
+        }
+
+        private void MirrorBtn_Checked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            SetMirrorState();
+        }
+
+        private void ZeroBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Zero();
         }
 
         private void _testTimer_Tick(object sender, EventArgs e)
@@ -121,7 +140,7 @@ namespace AngleReaderWF
             {
                 _angle = 0;
             }
-            SetAngle(_angle);
+            LineReceived(Angle.ToString() + " " + 1);
         }
 
         void OpenComPort()
@@ -160,15 +179,13 @@ namespace AngleReaderWF
             {
                 _mirrored = false;
                 barStaticItemMirrorLabel.Caption = "Mirror On";
-                arcScaleComponent1.StartAngle =  270;
-                arcScaleComponent1.EndAngle = -90;
+                LineReceived(_angle.ToString() + " " + 1);
             }
             else
             {
                 _mirrored = true;
                 barStaticItemMirrorLabel.Caption = "Mirror Off";
-                arcScaleComponent1.StartAngle = -90;
-                arcScaleComponent1.EndAngle = 270;
+                LineReceived(_angle.ToString() + " " + 1);
             }
 
             Settings.Default.mirror = _mirrored;
@@ -203,42 +220,34 @@ namespace AngleReaderWF
 
         void SetAngle(float angle)
         {
-            if (_displayMode == DisplayMode.Needle)
-            {
-                if (_wpfMode)
-                {
-                    
-                }
-                else
-                {
+            float needleAngle = 0.0f;
 
-                    arcScaleNeedleComponent1.Value = angle + 90;
-                    labelComponent1.Text = angle.ToString("N1") + " deg";
-                }
+            if (_mirrored)
+            {
+                wpfGuageControl1.arcScaleControl.EndAngle =  angle -90;
+                wpfGuageControl1.arcScaleControl.StartAngle = angle + 270;
+                needleAngle = angle;
+
             }
             else
             {
-                if (_wpfMode)
-                {
-                    wpfGuageControl1.arcScaleControl.EndAngle = angle;
-                    wpfGuageControl1.arcScaleControl.StartAngle = angle + 360;
-                    //_rotateTransform.Angle = (double)angle;
-                    float needleAngle = angle + 90;
-                    if(needleAngle > 360)
-                    {
-                        needleAngle -= 360;
-                    }
-                    wpfGuageControl1.needle.Value = (needleAngle);
-
-                }
-                else
-                {
-                    arcScaleComponent1.EndAngle = angle;
-                    arcScaleComponent1.StartAngle = angle + 360;
-                    arcScaleNeedleComponent1.Value = angle + 90;
-                }
+                wpfGuageControl1.arcScaleControl.EndAngle =   - angle + 270;
+                wpfGuageControl1.arcScaleControl.StartAngle = - angle - 90;
+                needleAngle = angle;
             }
+            wpfGuageControl1.needle.Value = (needleAngle);
+
+            string labelString = "";
+            if (angle < 10)
+                labelString = "00";
+            else if (angle < 100)
+                labelString = "0";
+
+            wpfGuageControl1.lblAngle.Text = labelString + angle.ToString("N1") + " deg";
+
         }
+            
+        
         
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -296,6 +305,7 @@ namespace AngleReaderWF
             {
                 serialPort2.WriteLine("R");
             }
+            _angle = 0;
         }
         private void barToggleSwitchItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -341,5 +351,19 @@ namespace AngleReaderWF
         {
 
         }
+
+        private void barCheckItem1_CheckedChanged(object sender, ItemClickEventArgs e)
+        {
+            if (_testTimer.Enabled)
+            {
+                _testTimer.Enabled = false;
+            }
+            else
+            {
+                _testTimer.Enabled = true;
+            }
+        }
+
+
     }
 }

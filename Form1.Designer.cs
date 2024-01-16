@@ -84,9 +84,6 @@
             this.gaugeControl1.Name = "gaugeControl1";
             this.gaugeControl1.Size = new System.Drawing.Size(386, 399);
             this.gaugeControl1.TabIndex = 0;
-            this.gaugeControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-            this.gaugeControl1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            this.gaugeControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             // 
             // elementHost1
             // 
@@ -357,6 +354,7 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+            this.Move += new System.EventHandler(this.Form1_Move);
             this.gaugeControl1.ResumeLayout(false);
             this.gaugeControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

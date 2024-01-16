@@ -98,6 +98,9 @@ namespace AngleReaderWF
 
             _rotateTransform = new RotateTransform();
             wpfGuageControl1.circularGuageControl.RenderTransform = this._rotateTransform;
+
+            this.ResizeRedraw = true;
+
         }
 
         private void PopupMenuItemShowMenu_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
@@ -407,6 +410,13 @@ namespace AngleReaderWF
             
             // Set window size
             this.Size = Settings.Default.Size;  
+        }
+
+        private void Form1_Move(object sender, EventArgs e)
+        {
+            
+            elementHost1.Invalidate();
+            elementHost1.Update();
         }
     }
 }

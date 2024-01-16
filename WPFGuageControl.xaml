@@ -51,14 +51,15 @@
                     <dxga:CustomScaleLabelPresentation>
                         <dxga:CustomScaleLabelPresentation.LabelTemplate>
                             <ControlTemplate>
-                                <TextBlock RenderTransformOrigin="0.5, 0.5" Text="{Binding Text}" Foreground="#0060C7" FontSize="15"/>
+                                <TextBlock RenderTransformOrigin="0.5, 0.5" Text="{Binding Text}" Foreground="#0060C7" FontSize="12
+                                           "/>
                             </ControlTemplate>
                         </dxga:CustomScaleLabelPresentation.LabelTemplate>
                     </dxga:CustomScaleLabelPresentation>
                 </dxga:ArcScale.LabelPresentation>
 
                 <dxga:ArcScale.LabelOptions>
-                    <dxga:ArcScaleLabelOptions Orientation="Radial" Offset="-52" ShowLast="False"/>
+                    <dxga:ArcScaleLabelOptions Orientation="Radial" Offset="-50" ShowLast="False"/>
                 </dxga:ArcScale.LabelOptions>
 
 

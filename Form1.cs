@@ -102,24 +102,42 @@ namespace AngleReaderWF
 
         private void PopupMenuItemShowMenu_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            if(bar2.Visible)
-            { 
+            ShowMenus(!bar2.Visible);
+            //if(bar2.Visible)
+            //{ 
+            //    bar2.Visible = false;
+            //    this.FormBorderStyle = FormBorderStyle.None;
+            //    wpfGuageControl1.popupMenuItemShowMenu.Content = "Show Menu";
+            //}
+            //else
+            //{
+            //    bar2.Visible = true;
+            //    this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            //    wpfGuageControl1.popupMenuItemShowMenu.Content = "Hide Menu";
+            //}
+            
+        }
+
+        void ShowMenus(bool visible)
+        {
+            if(!visible)
+            {
                 bar2.Visible = false;
                 this.FormBorderStyle = FormBorderStyle.None;
                 wpfGuageControl1.popupMenuItemShowMenu.Content = "Show Menu";
+                wpfGuageControl1.btnClose.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {
                 bar2.Visible = true;
                 this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
                 wpfGuageControl1.popupMenuItemShowMenu.Content = "Hide Menu";
+                wpfGuageControl1.btnClose.Visibility = System.Windows.Visibility.Hidden;
             }
-            
         }
 
         private void BtnClose_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            this.Dispose();
             this.Close();
         }
 
@@ -364,6 +382,59 @@ namespace AngleReaderWF
             }
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.FormBorderStyle == FormBorderStyle.None)
+                Properties.Settings.Default.MenuVisible = false;
+            else
+                Properties.Settings.Default.MenuVisible = true;
 
+            if (WindowState == FormWindowState.Maximized)
+            {
+                Properties.Settings.Default.Location = RestoreBounds.Location;
+                Properties.Settings.Default.Size = RestoreBounds.Size;
+
+            }
+            else if (WindowState == FormWindowState.Normal)
+            {
+                Properties.Settings.Default.Location = Location;
+                Properties.Settings.Default.Size = Size;
+
+            }
+            else
+            {
+                Properties.Settings.Default.Location = RestoreBounds.Location;
+                Properties.Settings.Default.Size = RestoreBounds.Size;
+
+            }
+            Properties.Settings.Default.Save();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ShowMenus(Settings.Default.MenuVisible);
+
+            //if(Settings.Default.MenuVisible)
+            //{
+            //    this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            //    bar2.Visible = true;
+            //    wpfGuageControl1.btnClose.Visibility = System.Windows.Visibility.Hidden;
+            //}
+            //else
+            //{
+            //    this.FormBorderStyle = FormBorderStyle.None;
+            //    bar2.Visible= false;
+            //    wpfGuageControl1.btnClose.Visibility = System.Windows.Visibility.Visible;
+            //}
+
+            // Set window location
+            this.Location = Settings.Default.Location;
+            
+            // Set window size
+            this.Size = Settings.Default.Size;
+
+
+            
+        }
     }
 }

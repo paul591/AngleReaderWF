@@ -15,16 +15,16 @@
                 <dxb:BarButtonItem Name="popupMenuItemShowMenu" Content="Show Menu" Glyph="{dx:DXImage SvgImages/PDF Viewer/Menu.svg}"/>
 
                 <dxb:BarButtonItem Name="popupMenuItemMirror" Content="Mirror" Glyph="{dx:DXImage SvgImages/DiagramIcons/FlipImage_Horizontal.svg}" />
-                
+
                 <dxb:BarButtonItem Name="popupMenuItemZero" Content="Zero" Glyph="{dx:DXImage SvgImages/Icon Builder/Actions_Arrow2Down.svg}"/>
-                
+
                 <dxb:BarButtonItem Name="popupMenuItemClose" Content="Close" Glyph="{dx:DXImage SvgImages/RichEdit/CloseHeaderAndFooter.svg}"/>
-                
+
             </dxb:PopupMenu.Items>
         </dxb:PopupMenu>
     </dxb:BarManager.DXContextMenu>
-    
-    
+
+
     <Grid>
         <dxga:CircularGaugeControl HorizontalAlignment="Center" VerticalAlignment="Center" Name="circularGuageControl" RenderTransformOrigin="0.5,0.5">
 
@@ -32,11 +32,11 @@
                 <dxga:ArcScale.MajorTickmarkOptions>
                     <dxga:MajorTickmarkOptions Offset="-25" FactorLength="2"/>
                 </dxga:ArcScale.MajorTickmarkOptions>
-                
+
                 <dxga:ArcScale.MinorTickmarkOptions>
                     <dxga:MinorTickmarkOptions Offset="-25" FactorLength="1.5"/>
                 </dxga:ArcScale.MinorTickmarkOptions>
-                
+
                 <dxga:ArcScale.Layers>
                     <dxga:ArcScaleLayer x:Name="layer1">
                         <dxga:ArcScaleLayer.Presentation>
@@ -110,11 +110,11 @@
             <Viewbox Grid.Column="1" Grid.Row="4">
                 <TextBlock TextWrapping="Wrap" Text="0.0 deg" Margin="0,0,0,0" Name="lblAngle" HorizontalAlignment="Right" Foreground="#0060C7"/>
             </Viewbox>
-            <Viewbox Grid.Column="2" Grid.Row="3" Margin="0,10,60,10">
+            <Viewbox Grid.Column="2" Grid.Row="3" Margin="0,10,60,10" HorizontalAlignment="Left">
                 <dx:SimpleButton x:Name="zeroBtn" Margin="0" Foreground="#0067C0" Height="30" Width="50" Padding="0" Glyph="{dx:DXImage SvgImages/Icon Builder/Actions_Arrow2Down.svg}"/>
             </Viewbox>
 
-            <Viewbox Grid.Column="0" Grid.Row="3" Margin="60,10,0,10">
+            <Viewbox Grid.Column="0" Grid.Row="3" Margin="60,10,0,10" HorizontalAlignment="Right">
                 <dx:SimpleButton x:Name="mirrorBtn" Foreground="#0067C0" Height="30" Width="50" Padding="0" Glyph="{dx:DXImage SvgImages/DiagramIcons/FlipImage_Horizontal.svg}" ButtonKind="Toggle" GlyphToContentOffset="5"/>
             </Viewbox>
             <Viewbox  Grid.Row="2" VerticalAlignment="Top">
@@ -122,6 +122,7 @@
                 <StackPanel Orientation="vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
             </Viewbox>
             <dx:SimpleButton x:Name="btnClose" Grid.Column="2" Glyph="{dx:DXImage SvgImages/RichEdit/CloseHeaderAndFooter.svg}" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Top" Width="{Binding ElementName=_this, Path=GlyphWidth}" Height="{Binding ElementName=_this, Path=GlyphHeight}" GlyphWidth="20" GlyphHeight="20"/>
+            <Image Grid.Column="1" VerticalAlignment="Top" Grid.Row="5" Source="/Resources/logo.png"/>
 
 
         </Grid>

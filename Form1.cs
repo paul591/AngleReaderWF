@@ -86,11 +86,11 @@ namespace AngleReaderWF
             serialPort2.DataReceived += new SerialDataReceivedEventHandler(serialPort2_DataReceived);
             serialPort2.DtrEnable = true;
 
-            wpfGuageControl1.mirrorBtn.Checked += MirrorBtn_Checked;
+            wpfGuageControl1.mirrorBtn.Click += MirrorBtn_Clicked;
             wpfGuageControl1.zeroBtn.Click += ZeroBtn_Click;
             wpfGuageControl1.btnClose.Click += BtnClose_Click;
 
-            wpfGuageControl1.popupMenuItemMirror.ItemClick += MirrorBtn_Checked;
+            wpfGuageControl1.popupMenuItemMirror.ItemClick += MirrorBtn_Clicked;
             wpfGuageControl1.popupMenuItemZero.ItemClick += ZeroBtn_Click;
             wpfGuageControl1.popupMenuItemClose.ItemClick += BtnClose_Click;
 
@@ -103,19 +103,7 @@ namespace AngleReaderWF
         private void PopupMenuItemShowMenu_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
             ShowMenus(!bar2.Visible);
-            //if(bar2.Visible)
-            //{ 
-            //    bar2.Visible = false;
-            //    this.FormBorderStyle = FormBorderStyle.None;
-            //    wpfGuageControl1.popupMenuItemShowMenu.Content = "Show Menu";
-            //}
-            //else
-            //{
-            //    bar2.Visible = true;
-            //    this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            //    wpfGuageControl1.popupMenuItemShowMenu.Content = "Hide Menu";
-            //}
-            
+           
         }
 
         void ShowMenus(bool visible)
@@ -141,7 +129,7 @@ namespace AngleReaderWF
             this.Close();
         }
 
-        private void MirrorBtn_Checked(object sender, System.Windows.RoutedEventArgs e)
+        private void MirrorBtn_Clicked(object sender, System.Windows.RoutedEventArgs e)
         {
             SetMirrorState();
         }
@@ -195,14 +183,16 @@ namespace AngleReaderWF
         {
             if (_mirrored)
             {
+                wpfGuageControl1.arcScaleControl.StartAngle = -90;
+                wpfGuageControl1.arcScaleControl.EndAngle = 270;
                 _mirrored = false;
-                barStaticItemMirrorLabel.Caption = "Mirror On";
                 LineReceived(_angle.ToString() + " " + 1);
             }
             else
             {
+                wpfGuageControl1.arcScaleControl.StartAngle = 270;
+                wpfGuageControl1.arcScaleControl.EndAngle = -90;
                 _mirrored = true;
-                barStaticItemMirrorLabel.Caption = "Mirror Off";
                 LineReceived(_angle.ToString() + " " + 1);
             }
 
@@ -238,22 +228,25 @@ namespace AngleReaderWF
 
         void SetAngle(float angle)
         {
+
+            if (_rotateTransform == null)
+                return;
+
             float needleAngle = 0.0f;
+
 
             if (_mirrored)
             {
-                wpfGuageControl1.arcScaleControl.EndAngle =  angle -90;
-                wpfGuageControl1.arcScaleControl.StartAngle = angle + 270;
-                needleAngle = angle;
-
+                _rotateTransform.Angle = angle;
+                needleAngle = 360 - angle;
             }
             else
             {
-                wpfGuageControl1.arcScaleControl.EndAngle =   - angle + 270;
-                wpfGuageControl1.arcScaleControl.StartAngle = - angle - 90;
-                needleAngle = angle;
+                _rotateTransform.Angle = -angle;
+                needleAngle = 360-angle;
             }
-            wpfGuageControl1.needle.Value = (needleAngle);
+
+            wpfGuageControl1.needle.Value = angle;
 
             string labelString = "";
             if (angle < 10)
@@ -264,8 +257,6 @@ namespace AngleReaderWF
             wpfGuageControl1.lblAngle.Text = labelString + angle.ToString("N1") + " deg";
 
         }
-            
-        
         
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -325,6 +316,7 @@ namespace AngleReaderWF
             }
             _angle = 0;
         }
+
         private void barToggleSwitchItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SetMirrorState();
@@ -343,7 +335,6 @@ namespace AngleReaderWF
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             //tidy up the serial port
-
             serialPort2.Close();
             serialPort2.Dispose();
         }
@@ -393,19 +384,16 @@ namespace AngleReaderWF
             {
                 Properties.Settings.Default.Location = RestoreBounds.Location;
                 Properties.Settings.Default.Size = RestoreBounds.Size;
-
             }
             else if (WindowState == FormWindowState.Normal)
             {
                 Properties.Settings.Default.Location = Location;
                 Properties.Settings.Default.Size = Size;
-
             }
             else
             {
                 Properties.Settings.Default.Location = RestoreBounds.Location;
                 Properties.Settings.Default.Size = RestoreBounds.Size;
-
             }
             Properties.Settings.Default.Save();
         }
@@ -414,27 +402,11 @@ namespace AngleReaderWF
         {
             ShowMenus(Settings.Default.MenuVisible);
 
-            //if(Settings.Default.MenuVisible)
-            //{
-            //    this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            //    bar2.Visible = true;
-            //    wpfGuageControl1.btnClose.Visibility = System.Windows.Visibility.Hidden;
-            //}
-            //else
-            //{
-            //    this.FormBorderStyle = FormBorderStyle.None;
-            //    bar2.Visible= false;
-            //    wpfGuageControl1.btnClose.Visibility = System.Windows.Visibility.Visible;
-            //}
-
             // Set window location
             this.Location = Settings.Default.Location;
             
             // Set window size
-            this.Size = Settings.Default.Size;
-
-
-            
+            this.Size = Settings.Default.Size;  
         }
     }
 }

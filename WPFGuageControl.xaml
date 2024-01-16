@@ -28,20 +28,18 @@
     <Grid>
         <dxga:CircularGaugeControl HorizontalAlignment="Center" VerticalAlignment="Center" Name="circularGuageControl" RenderTransformOrigin="0.5,0.5">
 
-            <dxga:ArcScale Name="arcScaleControl"  Margin="0,0,0,0" ShowLine="False" EndValue="360" EndAngle="270" StartAngle="-90" MinorIntervalCount="10" MajorIntervalCount="36"  ShowLabels="True" ShowSpindleCap="True">
+            <dxga:ArcScale Name="arcScaleControl"  Margin="0,0,0,0" ShowLine="False" EndValue="360" EndAngle="270" StartAngle="-90" MinorIntervalCount="10" MajorIntervalCount="36"  ShowLabels="True" ShowSpindleCap="True" RenderTransformOrigin="0.5,0.5">
                 <dxga:ArcScale.MajorTickmarkOptions>
-                    <dxga:MajorTickmarkOptions Offset="-25" FactorLength="2"/>
+                    <dxga:MajorTickmarkOptions Offset="-15" FactorLength="2"/>
                 </dxga:ArcScale.MajorTickmarkOptions>
 
                 <dxga:ArcScale.MinorTickmarkOptions>
-                    <dxga:MinorTickmarkOptions Offset="-25" FactorLength="1.5"/>
+                    <dxga:MinorTickmarkOptions Offset="-15" FactorLength="1.5"/>
                 </dxga:ArcScale.MinorTickmarkOptions>
 
                 <dxga:ArcScale.Layers>
                     <dxga:ArcScaleLayer x:Name="layer1">
-                        <dxga:ArcScaleLayer.Presentation>
-                            <dxga:CleanWhiteArcScaleBackgroundLayerPresentation/>
-                        </dxga:ArcScaleLayer.Presentation>
+
                     </dxga:ArcScaleLayer>
                 </dxga:ArcScale.Layers>
 
@@ -60,19 +58,19 @@
                 </dxga:ArcScale.LabelPresentation>
 
                 <dxga:ArcScale.LabelOptions>
-                    <dxga:ArcScaleLabelOptions Orientation="Tangent" Offset="-14" ShowLast="False"/>
+                    <dxga:ArcScaleLabelOptions Orientation="Radial" Offset="-52" ShowLast="False"/>
                 </dxga:ArcScale.LabelOptions>
 
 
                 <dxga:ArcScale.Needles>
-                    <dxga:ArcScaleNeedle x:Name="needle" IsInteractive="False" IsHitTestVisible="False">
+                    <dxga:ArcScaleNeedle x:Name="needle" IsInteractive="False" IsHitTestVisible="False" >
 
                         <dxga:ArcScaleNeedle.Presentation>
                             <dxga:CustomArcScaleNeedlePresentation>
                                 <dxga:CustomArcScaleNeedlePresentation.NeedleTemplate>
                                     <ControlTemplate>
                                         <Grid RenderTransformOrigin="0, 0.5" Margin="0,0,2,0" Height="10" Opacity="1">
-                                            <Path HorizontalAlignment="Center" Fill="Red" VerticalAlignment="Center"
+                                            <Path Name="needlePath" RenderTransformOrigin="0,0.5" HorizontalAlignment="Center" Fill="Red" VerticalAlignment="Center"
                                                   Data="M0,0 L20,8 L0,16 z" Stretch="Fill"/>
                                             <!--<Rectangle Fill="Black" Height="8" VerticalAlignment="Center" Margin="0,0,20,0"/>
                                             <Rectangle Fill="Black" Height="8" Width="30" HorizontalAlignment="Left" Margin="-30,0,0,0"/>

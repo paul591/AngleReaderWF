@@ -361,7 +361,10 @@ namespace AngleReaderWF
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-
+            wpfGuageControl1.InvalidateVisual();
+            elementHost1.Invalidate();
+            elementHost1.Update();
+            this.Update();
         }
 
         private void barCheckItem1_CheckedChanged(object sender, ItemClickEventArgs e)
@@ -414,9 +417,18 @@ namespace AngleReaderWF
 
         private void Form1_Move(object sender, EventArgs e)
         {
-            
+            wpfGuageControl1.InvalidateVisual();
             elementHost1.Invalidate();
             elementHost1.Update();
+            this.Update();
+        }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            wpfGuageControl1.InvalidateVisual();
+            elementHost1.Invalidate();
+            elementHost1.Update();
+            this.Update();
         }
     }
 }

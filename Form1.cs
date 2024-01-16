@@ -23,7 +23,6 @@ namespace AngleReaderWF
 {
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
-
         public float Angle
         {
             get { return _angle; }
@@ -35,30 +34,34 @@ namespace AngleReaderWF
         public float _angle = 0.0f;
         bool _mirrored = false;
         bool _testMode = false;
-        bool _wpfMode = false;
         Timer _testTimer = new Timer();
-
         RotateTransform _rotateTransform;
+
 
         public Form1()
         {
             CommonConstructor();
+
+            Load += (o, e) => { Width -= 1; Width += 1; };
+
+
         }
 
         public Form1(string[] args)
         {
             CommonConstructor();
-
             if (args.Length > 0)
             {
                 if (args[0] == "TEST")
                 {
                     _testMode = true;
-                    _testTimer.Interval = 200;
+                    _testTimer.Interval = 20;
                     _testTimer.Enabled = true;
                     _testTimer.Tick += _testTimer_Tick;
                 }
             }
+
+            //Load += (o, e) => { Width -= 1; Width += 1; };
         }
 
         void CommonConstructor()
@@ -81,7 +84,6 @@ namespace AngleReaderWF
                 barToggleSwitchItem1.Checked = false;
             }
 
-            //SetMirrorState();
             barEditItem4.EditValue = _comPort;
             serialPort2.DataReceived += new SerialDataReceivedEventHandler(serialPort2_DataReceived);
             serialPort2.DtrEnable = true;
@@ -98,20 +100,17 @@ namespace AngleReaderWF
 
             _rotateTransform = new RotateTransform();
             wpfGuageControl1.circularGuageControl.RenderTransform = this._rotateTransform;
-
-            this.ResizeRedraw = true;
-
         }
 
         private void PopupMenuItemShowMenu_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
             ShowMenus(!bar2.Visible);
-           
+
         }
 
         void ShowMenus(bool visible)
         {
-            if(!visible)
+            if (!visible)
             {
                 bar2.Visible = false;
                 this.FormBorderStyle = FormBorderStyle.None;
@@ -145,7 +144,7 @@ namespace AngleReaderWF
         private void _testTimer_Tick(object sender, EventArgs e)
         {
             _angle++;
-            if(_angle > 360)
+            if (_angle > 360)
             {
                 _angle = 0;
             }
@@ -246,7 +245,7 @@ namespace AngleReaderWF
             else
             {
                 _rotateTransform.Angle = -angle;
-                needleAngle = 360-angle;
+                needleAngle = 360 - angle;
             }
 
             wpfGuageControl1.needle.Value = angle;
@@ -260,7 +259,7 @@ namespace AngleReaderWF
             wpfGuageControl1.lblAngle.Text = labelString + angle.ToString("N1") + " deg";
 
         }
-        
+
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             _mouseDown = true;
@@ -361,10 +360,7 @@ namespace AngleReaderWF
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            wpfGuageControl1.InvalidateVisual();
-            elementHost1.Invalidate();
-            elementHost1.Update();
-            this.Update();
+
         }
 
         private void barCheckItem1_CheckedChanged(object sender, ItemClickEventArgs e)
@@ -410,25 +406,17 @@ namespace AngleReaderWF
 
             // Set window location
             this.Location = Settings.Default.Location;
-            
+
             // Set window size
-            this.Size = Settings.Default.Size;  
+            this.Size = Settings.Default.Size;
+
         }
 
-        private void Form1_Move(object sender, EventArgs e)
+        private void Form1_SizeChanged(object sender, EventArgs e)
         {
+            this.Invalidate();
+            this.elementHost1.Invalidate();
             wpfGuageControl1.InvalidateVisual();
-            elementHost1.Invalidate();
-            elementHost1.Update();
-            this.Update();
-        }
-
-        private void Form1_ResizeEnd(object sender, EventArgs e)
-        {
-            wpfGuageControl1.InvalidateVisual();
-            elementHost1.Invalidate();
-            elementHost1.Update();
-            this.Update();
         }
     }
 }

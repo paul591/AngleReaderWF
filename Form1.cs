@@ -21,6 +21,7 @@ using DevExpress.Xpf.Gauges;
 
 namespace AngleReaderWF
 {
+
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
         public float Angle
@@ -28,40 +29,33 @@ namespace AngleReaderWF
             get { return _angle; }
         }
 
+        public float RPM
+        {
+            get { return _rpm; }
+        }
+
         private bool _mouseDown;
         private Point _lastLocation;
         private String _comPort = "None";
         public float _angle = 0.0f;
+        public float _rpm = 0.0f;
         bool _mirrored = false;
         bool _testMode = false;
         Timer _testTimer = new Timer();
         RotateTransform _rotateTransform;
+        SettingsDialog _settingsDialog;
+        public Preferences _preferences;
 
+        public List<String> _log = new List<String>();
 
         public Form1()
         {
             CommonConstructor();
-
-            Load += (o, e) => { Width -= 1; Width += 1; };
-
-
         }
 
         public Form1(string[] args)
         {
             CommonConstructor();
-            if (args.Length > 0)
-            {
-                if (args[0] == "TEST")
-                {
-                    _testMode = true;
-                    _testTimer.Interval = 20;
-                    _testTimer.Enabled = true;
-                    _testTimer.Tick += _testTimer_Tick;
-                }
-            }
-
-            //Load += (o, e) => { Width -= 1; Width += 1; };
         }
 
         void CommonConstructor()
@@ -100,6 +94,8 @@ namespace AngleReaderWF
 
             _rotateTransform = new RotateTransform();
             wpfGuageControl1.circularGuageControl.RenderTransform = this._rotateTransform;
+
+            _preferences = new Preferences();
         }
 
         private void PopupMenuItemShowMenu_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
@@ -139,16 +135,6 @@ namespace AngleReaderWF
         private void ZeroBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Zero();
-        }
-
-        private void _testTimer_Tick(object sender, EventArgs e)
-        {
-            _angle++;
-            if (_angle > 360)
-            {
-                _angle = 0;
-            }
-            LineReceived(Angle.ToString() + " " + 1);
         }
 
         void OpenComPort()
@@ -211,24 +197,36 @@ namespace AngleReaderWF
         private delegate void LineReceivedEvent(string line);
         private void LineReceived(string line)
         {
+            //Split the incoming line.  If this is data, then the first character will be a 'D' 
+            //followed by the parameteres in the format:
+            // D ang cnt rpm
             string[] strings = line.Split(new char[] { '\r', ' ' });
-            float.TryParse(strings[0], out _angle);
 
-            double angleForModulus = _angle * 10;
-            long longAngleForModuls = ((long)angleForModulus) % 3600;
-            float finalAngle = ((float)longAngleForModuls) / 10.0f;
-            if (finalAngle < 0)
+            //Check if its a data packet.
+            if (strings[0] == "D")
             {
-                finalAngle = 360 + finalAngle;
+                //Yup.  So, lets get the angle from the parameters
+                float.TryParse(strings[1], out _angle);
+
+                double angleForModulus = _angle * 10;
+                long longAngleForModuls = ((long)angleForModulus) % 3600;
+                float finalAngle = ((float)longAngleForModuls) / 10.0f;
+                if (finalAngle < 0)
+                {
+                    finalAngle = 360 + finalAngle;
+                }
+
+                float rpm = 0.0f;
+                //We dont really care abou the actual count at the moment so we will
+                //skip over that one, and now go and get the RPM...
+                float.TryParse(strings[3], out rpm);
+
+                SetAngleAndRpm(finalAngle, (int)rpm);
             }
-
-            Console.WriteLine(longAngleForModuls);
-
-            SetAngle(finalAngle);
         }
 
 
-        void SetAngle(float angle)
+        void SetAngleAndRpm(float angle, int rpm)
         {
 
             if (_rotateTransform == null)
@@ -256,7 +254,16 @@ namespace AngleReaderWF
             else if (angle < 100)
                 labelString = "0";
 
-            wpfGuageControl1.lblAngle.Text = labelString + angle.ToString("N1") + " deg";
+            wpfGuageControl1.lblAngle.Text = labelString + angle.ToString("N1") + "°";
+
+            if (rpm < 10)
+                labelString = "000";
+            else if (rpm < 100)
+                labelString = "00";
+            else if (rpm < 1000)
+                labelString = "0";
+               
+            wpfGuageControl1.lblRPM.Text = labelString + rpm.ToString("N0");
 
         }
 

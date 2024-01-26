@@ -106,5 +106,17 @@ namespace AngleReaderWF.Properties {
                 this["MenuVisible"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ZeroValue {
+            get {
+                return ((int)(this["ZeroValue"]));
+            }
+            set {
+                this["ZeroValue"] = value;
+            }
+        }
     }
 }

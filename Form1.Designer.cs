@@ -35,7 +35,6 @@
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.wpfGuageControl1 = new AngleReaderWF.WPFGuageControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar2 = new DevExpress.XtraBars.Bar();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.barEditItem4 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
@@ -80,9 +79,9 @@
             this.gaugeControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gaugeControl1.Controls.Add(this.elementHost1);
             this.gaugeControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gaugeControl1.Location = new System.Drawing.Point(0, 22);
+            this.gaugeControl1.Location = new System.Drawing.Point(0, 0);
             this.gaugeControl1.Name = "gaugeControl1";
-            this.gaugeControl1.Size = new System.Drawing.Size(386, 399);
+            this.gaugeControl1.Size = new System.Drawing.Size(418, 421);
             this.gaugeControl1.TabIndex = 0;
             // 
             // elementHost1
@@ -91,15 +90,13 @@
             this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.elementHost1.Location = new System.Drawing.Point(0, 0);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(386, 399);
+            this.elementHost1.Size = new System.Drawing.Size(418, 421);
             this.elementHost1.TabIndex = 0;
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = this.wpfGuageControl1;
             // 
             // barManager1
             // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -121,7 +118,6 @@
             this.barButtonItem3,
             this.barButtonItem4,
             this.barCheckItem1});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 15;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
@@ -129,19 +125,6 @@
             this.repositoryItemComboBox1,
             this.repositoryItemComboBox2,
             this.repositoryItemButtonEdit1});
-            // 
-            // bar2
-            // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockRow = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem4)});
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
             // 
             // barStaticItem1
             // 
@@ -158,9 +141,6 @@
             this.barEditItem4.Id = 7;
             this.barEditItem4.Name = "barEditItem4";
             this.barEditItem4.Size = new System.Drawing.Size(100, 0);
-            this.barEditItem4.EditValueChanged += new System.EventHandler(this.barEditItem4_EditValueChanged);
-            this.barEditItem4.HiddenEditor += new DevExpress.XtraBars.ItemClickEventHandler(this.barEditItem4_HiddenEditor);
-            this.barEditItem4.ShowingEditor += new DevExpress.XtraBars.ItemCancelEventHandler(this.barEditItem4_ShowingEditor);
             // 
             // repositoryItemComboBox2
             // 
@@ -176,7 +156,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(386, 22);
+            this.barDockControlTop.Size = new System.Drawing.Size(418, 0);
             // 
             // barDockControlBottom
             // 
@@ -184,23 +164,23 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 421);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(386, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(418, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 399);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 421);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(386, 22);
+            this.barDockControlRight.Location = new System.Drawing.Point(418, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 399);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 421);
             // 
             // barSubItem1
             // 
@@ -335,7 +315,7 @@
             this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 421);
+            this.ClientSize = new System.Drawing.Size(418, 421);
             this.Controls.Add(this.gaugeControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -371,7 +351,6 @@
 
         private DevExpress.XtraGauges.Win.GaugeControl gaugeControl1;
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarSubItem barSubItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;

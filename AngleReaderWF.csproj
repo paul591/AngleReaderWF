@@ -76,6 +76,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Log.cs" />
+    <Compile Include="MessageQueue.cs" />
     <Compile Include="Preferences.cs" />
     <Compile Include="SettingsDialog.cs">
       <SubType>Form</SubType>

@@ -12,7 +12,9 @@
     <dxb:BarManager.DXContextMenu>
         <dxb:PopupMenu PopupAnimation="Slide">
             <dxb:PopupMenu.Items>
-                <dxb:BarButtonItem Name="popupMenuItemShowMenu" Content="Show Menu" Glyph="{dx:DXImage SvgImages/PDF Viewer/Menu.svg}"/>
+                <dxb:BarButtonItem Name="popupMenuItemShowMenu" Content="Show Title Bar" Glyph="{dx:DXImage SvgImages/PDF Viewer/Menu.svg}"/>
+
+                <dxb:BarButtonItem Name="popupMenuItemSettings" Content="Settings" Glyph="{dx:DXImage SvgImages/Scheduling/ViewSettings.svg}"/>
 
                 <dxb:BarButtonItem Name="popupMenuItemMirror" Content="Mirror" Glyph="{dx:DXImage SvgImages/DiagramIcons/FlipImage_Horizontal.svg}" />
 

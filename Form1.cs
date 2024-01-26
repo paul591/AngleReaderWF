@@ -18,6 +18,8 @@ using Timer = System.Windows.Forms.Timer;
 using System.Windows.Media;
 using Color = System.Drawing.Color;
 using DevExpress.Xpf.Gauges;
+using System.Collections.ObjectModel;
+using DevExpress.Xpf.Editors.Themes;
 
 namespace AngleReaderWF
 {
@@ -36,7 +38,6 @@ namespace AngleReaderWF
 
         private bool _mouseDown;
         private Point _lastLocation;
-        private String _comPort = "None";
         public float _angle = 0.0f;
         public float _rpm = 0.0f;
         bool _mirrored = false;
@@ -46,7 +47,10 @@ namespace AngleReaderWF
         SettingsDialog _settingsDialog;
         public Preferences _preferences;
 
-        public List<String> _log = new List<String>();
+        MessageQueue _messageQueue;
+        Log _log = new Log();
+
+        Timer _rpmTimeoutTimer;
 
         public Form1()
         {
@@ -64,7 +68,6 @@ namespace AngleReaderWF
 
             this.TransparencyKey = Color.Black;
 
-            _comPort = Settings.Default.comport;
             _mirrored = Settings.Default.mirror;
 
             if (_mirrored)
@@ -78,7 +81,6 @@ namespace AngleReaderWF
                 barToggleSwitchItem1.Checked = false;
             }
 
-            barEditItem4.EditValue = _comPort;
             serialPort2.DataReceived += new SerialDataReceivedEventHandler(serialPort2_DataReceived);
             serialPort2.DtrEnable = true;
 
@@ -89,6 +91,7 @@ namespace AngleReaderWF
             wpfGuageControl1.popupMenuItemMirror.ItemClick += MirrorBtn_Clicked;
             wpfGuageControl1.popupMenuItemZero.ItemClick += ZeroBtn_Click;
             wpfGuageControl1.popupMenuItemClose.ItemClick += BtnClose_Click;
+            wpfGuageControl1.popupMenuItemSettings.ItemClick += PopupMenuItemSettings_ItemClick;
 
             wpfGuageControl1.popupMenuItemShowMenu.ItemClick += PopupMenuItemShowMenu_ItemClick;
 
@@ -96,28 +99,72 @@ namespace AngleReaderWF
             wpfGuageControl1.circularGuageControl.RenderTransform = this._rotateTransform;
 
             _preferences = new Preferences();
+            _preferences.ZeroValue = Settings.Default.ZeroValue;
+            _preferences.COMPort = Settings.Default.comport;
+
+            _messageQueue = new MessageQueue();
+            _messageQueue.PropertyChanged += _messageQueue_MessageAdded;
+
+            _rpmTimeoutTimer = new Timer();
+            _rpmTimeoutTimer.Tick += _rpmTimeoutTimer_Tick;
+            _rpmTimeoutTimer.Interval = 2000;
+            _rpmTimeoutTimer.Enabled = true;
+            _rpmTimeoutTimer.Stop();
+        }
+
+        private void _rpmTimeoutTimer_Tick(object sender, EventArgs e)
+        {
+            //RPM Timeout of 1000ms has elapsed, so we'll just reset the 
+            //rpm label to 0, so as not to leave it set at a weird number
+            _rpm = 0;
+            wpfGuageControl1.lblRPM.Text = "0000";
+            _rpmTimeoutTimer.Stop();
+        }
+
+        private void _messageQueue_MessageAdded(object sender, PropertyChangedEventArgs e)
+        {
+            while (_messageQueue._messageQueue.Count > 0)
+            {
+                if (serialPort2 != null && serialPort2.IsOpen)
+                {
+                    serialPort2.Write(_messageQueue._messageQueue[0].MessageText);
+                }
+                _messageQueue._messageQueue.RemoveAt(0);
+            }
+        }
+
+        private void PopupMenuItemSettings_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            this.TopMost = false;
+            _settingsDialog = new SettingsDialog(_preferences, _log, _messageQueue);
+            if(_settingsDialog.ShowDialog() == DialogResult.OK)
+            {
+                Settings.Default.ZeroValue = _preferences.ZeroValue;
+                Settings.Default.comport = _preferences.COMPort;
+                Settings.Default.Save();
+
+                OpenComPort();
+            }
+            this.TopMost = true;
         }
 
         private void PopupMenuItemShowMenu_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
-            ShowMenus(!bar2.Visible);
-
+            ShowMenus(this.FormBorderStyle == FormBorderStyle.None);
         }
 
         void ShowMenus(bool visible)
         {
             if (!visible)
             {
-                bar2.Visible = false;
                 this.FormBorderStyle = FormBorderStyle.None;
-                wpfGuageControl1.popupMenuItemShowMenu.Content = "Show Menu";
+                wpfGuageControl1.popupMenuItemShowMenu.Content = "Show Title Bar";
                 wpfGuageControl1.btnClose.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {
-                bar2.Visible = true;
                 this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-                wpfGuageControl1.popupMenuItemShowMenu.Content = "Hide Menu";
+                wpfGuageControl1.popupMenuItemShowMenu.Content = "Hide Title Bar";
                 wpfGuageControl1.btnClose.Visibility = System.Windows.Visibility.Hidden;
             }
         }
@@ -145,13 +192,13 @@ namespace AngleReaderWF
                 {
                     serialPort2.Close();
                     serialPort2.BaudRate = 115200;
-                    if (!_comPort.StartsWith("COM"))
+                    if (!_preferences.COMPort.StartsWith("COM"))
                     {
                         MessageBox.Show("No COM Port selected.  Please plug in the device and select the correct port.", "No COM Port");
                     }
                     else
                     {
-                        serialPort2.PortName = _comPort;
+                        serialPort2.PortName = _preferences.COMPort;
 
                         try
                         {
@@ -197,8 +244,10 @@ namespace AngleReaderWF
         private delegate void LineReceivedEvent(string line);
         private void LineReceived(string line)
         {
-            //Split the incoming line.  If this is data, then the first character will be a 'D' 
-            //followed by the parameteres in the format:
+            _log.AddLogEntry(line);
+
+            // Split the incoming line.  If this is data, then the first character will be a 'D' 
+            // followed by the parameteres in the format:
             // D ang cnt rpm
             string[] strings = line.Split(new char[] { '\r', ' ' });
 
@@ -223,11 +272,35 @@ namespace AngleReaderWF
 
                 SetAngleAndRpm(finalAngle, (int)rpm);
             }
+            else if (strings[0] == "S")
+            {
+                if (strings.Length == 5)
+                {
+                    int result = 0;
+                    if (int.TryParse(strings[1], out result))
+                    {
+                        _preferences.PulsePerRev = result;
+                    }
+
+                    if (int.TryParse(strings[2], out result))
+                    {
+                        _preferences.FilterDepth = result;
+                    }
+
+                    if (int.TryParse(strings[3], out result))
+                    {
+                        _preferences.LoopInterval = result;
+                    }
+                }
+
+            }
         }
 
 
         void SetAngleAndRpm(float angle, int rpm)
         {
+            _rpmTimeoutTimer.Stop();
+            _rpmTimeoutTimer.Start();
 
             if (_rotateTransform == null)
                 return;
@@ -308,22 +381,24 @@ namespace AngleReaderWF
             }
         }
 
-        private void barEditItem4_EditValueChanged(object sender, EventArgs e)
-        {
-            _comPort = barEditItem4.EditValue.ToString();
-            Settings.Default.comport = _comPort;
-            Settings.Default.Save();
-
-            OpenComPort();
-        }
-
         void Zero()
         {
             if (serialPort2 != null && serialPort2.IsOpen)
             {
-                serialPort2.WriteLine("R");
+                if (_preferences != null)
+                {
+                    serialPort2.WriteLine("R" + _preferences.ZeroValue);
+                }
+                else
+                {
+                    serialPort2.WriteLine("R");
+                }
             }
-            _angle = 0;
+            if (_preferences != null)
+            {
+                _angle = _preferences.ZeroValue;
+            }
+            _rpm = 0;
         }
 
         private void barToggleSwitchItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -348,22 +423,6 @@ namespace AngleReaderWF
             serialPort2.Dispose();
         }
 
-        private void barEditItem4_HiddenEditor(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (!_testMode)
-            {
-                _comPort = (sender as BarEditItem).EditValue.ToString();
-                if (serialPort2.IsOpen)
-                {
-                    serialPort2.Close();
-                    serialPort2.PortName = _comPort;
-                    OpenComPort();
-
-                    Settings.Default.comport = _comPort;
-                    Settings.Default.Save();
-                }
-            }
-        }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
